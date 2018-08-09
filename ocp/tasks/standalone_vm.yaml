@@ -1,0 +1,65 @@
+---
+- name: create Resource Group
+  import_tasks: createRG.yaml
+  when: 
+    -  not((outer_item.RGname is undefined) or (outer_item.RGname is none) or (outer_item.RGname | trim == '')) 
+    -  not((outer_item.RGlocation is undefined) or (outer_item.RGlocation is none) or (outer_item.RGlocation | trim == '')) 
+
+- name: Create Virtual Network
+  import_tasks: createVNET.yaml
+  when:
+    -  not((outer_item.VNETaddress is undefined) or (outer_item.VNETaddress is none) or (outer_item.VNETaddress | trim == '')) 
+    -  not((outer_item.VNETname is undefined) or (outer_item.VNETname is none) or (outer_item.VNETname | trim == '')) 
+    -  not((outer_item.RGname is undefined) or (outer_item.RGname is none) or (outer_item.RGname | trim == '')) 
+
+- name: create subnet
+  import_tasks: createSUBNET.yaml
+  when:
+    -  not((outer_item.VNETname is undefined) or (outer_item.VNETname is none) or (outer_item.VNETname | trim == '')) 
+    -  not((outer_item.RGname is undefined) or (outer_item.RGname is none) or (outer_item.RGname | trim == '')) 
+
+- name: create network Security Group
+  import_tasks: createSG.yaml
+  when:
+    -  not((outer_item.NSGname is undefined) or (outer_item.NSGname is none) or (outer_item.NSGname | trim == '')) 
+    -  not((outer_item.rule_name is undefined) or (outer_item.rule_name is none) or (outer_item.rule_name | trim == '')) 
+
+- name: create network Interface Card 
+  import_tasks: createNIC.yaml
+  when:
+    -  not((outer_item.NICname is undefined) or (outer_item.NICname is none) or (outer_item.NICname | trim == '')) 
+
+- name: create VM with two disk
+  import_tasks: createVM.yaml
+  when:
+    -  not((outer_item.disk1_size is undefined) or (outer_item.disk1_size is none) or (outer_item.disk1_size | trim == '')) 
+    -  not((outer_item.disk1_type is undefined) or (outer_item.disk1_type is none) or (outer_item.disk1_type | trim == '')) 
+    -  not((outer_item.disk2_size is undefined) or (outer_item.disk2_size is none) or (outer_item.disk2_size | trim == ''))
+    -  not((outer_item.disk2_type is undefined) or (outer_item.disk2_type is none) or (outer_item.disk2_type | trim == ''))
+
+- name: create VM with one disk disk1
+  import_tasks: createVM1.yaml
+  when:
+    -  not((outer_item.disk1_size is undefined) or (outer_item.disk1_size is none) or (outer_item.disk1_size | trim == '')) 
+    -  not((outer_item.disk1_type is undefined) or (outer_item.disk1_type is none) or (outer_item.disk1_type | trim == '')) 
+    -  ((outer_item.disk2_size is undefined) or (outer_item.disk2_size is none) or (outer_item.disk2_size | trim == ''))
+    -  ((outer_item.disk2_type is undefined) or (outer_item.disk2_type is none) or (outer_item.disk2_type | trim == ''))
+
+- name: create VM with one disk disk2
+  import_tasks: createVM2.yaml
+  when:
+    -  ((outer_item.disk1_size is undefined) or (outer_item.disk1_size is none) or (outer_item.disk1_size | trim == '')) 
+    -  ((outer_item.disk1_type is undefined) or (outer_item.disk1_type is none) or (outer_item.disk1_type | trim == '')) 
+    -  not((outer_item.disk2_size is undefined) or (outer_item.disk2_size is none) or (outer_item.disk2_size | trim == ''))
+    -  not((outer_item.disk2_type is undefined) or (outer_item.disk2_type is none) or (outer_item.disk2_type | trim == ''))
+
+- name: create VM with no disk 
+  import_tasks: createVM3.yaml
+  when:
+    -  ((outer_item.disk1_size is undefined) or (outer_item.disk1_size is none) or (outer_item.disk1_size | trim == '')) 
+    -  ((outer_item.disk1_type is undefined) or (outer_item.disk1_type is none) or (outer_item.disk1_type | trim == '')) 
+    -  ((outer_item.disk2_size is undefined) or (outer_item.disk2_size is none) or (outer_item.disk2_size | trim == ''))
+    -  ((outer_item.disk2_type is undefined) or (outer_item.disk2_type is none) or (outer_item.disk2_type | trim == ''))
+
+#- fail: msg=" outer_item.disk2_size is empty"
+#  when: (( outer_item.disk1_size is none ))

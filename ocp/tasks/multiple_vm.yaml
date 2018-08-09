@@ -1,0 +1,8 @@
+- debug:
+    msg: "{{ input }}"
+- include_tasks: standalone_vm.yaml
+  with_items:
+    - "{{ input }}"
+  loop_control:
+    loop_var: outer_item
+

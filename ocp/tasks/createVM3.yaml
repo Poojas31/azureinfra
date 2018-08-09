@@ -1,0 +1,15 @@
+- name: Create VM
+  azure_rm_virtualmachine:
+    resource_group: "{{ outer_item.RGname }}"
+    name: "{{ outer_item.VMname }}"
+    vm_size: "{{ outer_item.VMsize }}"
+    admin_username: "{{ outer_item.username }}"
+    admin_password: "{{ outer_item.password }}"
+    network_interfaces: "{{ outer_item.NICname }}"
+    managed_disk_type: "{{ outer_item.disk_type }}"
+    image:
+      offer: "{{ outer_item.Image_name }}"
+      publisher: "{{ outer_item.image_publisher }}"
+      sku: "{{ outer_item.image_sku }}"
+      urn: "{{ outer_item.image_urn }}"
+      version: "{{ outer_item.image_version }}"

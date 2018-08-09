@@ -1,0 +1,33 @@
+---
+input:
+  - RGname: chatopsRG
+    RGlocation: centralus
+    VNETname: chatopsVNET
+    VNETaddress: 10.50.1.0/24
+    SUBNETname: chatopsSUBNET
+    SUBNETrange: 10.50.1.0/24
+    NSGname: chatopsNSG
+    rule_name: SSH
+    rule_protocol: Tcp
+    rule_destination_port: 22
+    rule_access: Allow
+    rule_priority: 100
+    rule_direction: Inbound
+    NICname: chatopsNIC
+    ip_allocation_method: static
+    private_ip: 10.50.1.8
+    ipconfig_name: chatopsip1
+    VMname: chatopsVM
+    VMsize: Standard_D4s_v3
+    username: ranjanku
+    password: welcome#1234
+    disk_type: Premium_LRS
+    Image_name: RHEL
+    image_publisher: RedHat
+    image_sku: 7.4
+    image_urn: RedHat:RHEL:7.4:latest
+    image_version: latest
+    disk1_size: 
+    disk1_type: 
+    disk2_size: 
+    disk2_type: 

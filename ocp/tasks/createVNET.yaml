@@ -1,0 +1,5 @@
+- name: Create virtual network
+  azure_rm_virtualnetwork:
+    resource_group: "{{ outer_item.RGname }}"
+    name: "{{ outer_item.VNETname }}"
+    address_prefixes: "{{ outer_item.VNETaddress }}"

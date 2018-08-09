@@ -1,0 +1,35 @@
+---
+# vars file for mysql_server
+# mysql_server_password:  ranjan
+csv_var: inputs/input.csv
+RGname: ranjan_resource
+RGlocation: centralus
+VNETname: ranjanVNET
+VNETaddress: 10.50.1.0/24
+SUBNETname: default
+SUBNETrange: 10.50.1.0/24
+NSGname: NSGranjan
+rule_name: SSH
+rule_protocol: Tcp
+rule_destination_port: 22
+rule_access: Allow
+rule_priority: 100
+rule_direction: Inbound
+NICname: ranjanNIC
+ip_allocation_method: static
+private_ip: 10.50.1.5
+ipconfig_name: masterip1
+VMname: ranjan
+VMsize: Standard_D4s_v3
+username: ranjan
+password: welcome#1234
+disk_type: Premium_LRS
+Image_name: RHEL
+image_publisher: RedHat
+image_sku: 7.4
+image_urn: RedHat:RHEL:7.4:latest
+image_version: latest
+disk1_size: 100
+disk1_type: Premium_LRS
+disk2_size: 
+disk2_type:

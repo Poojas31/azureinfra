@@ -1,0 +1,10 @@
+---
+- name: "convert csv to yaml"
+  include: csv_yaml.yaml
+
+#- debug:
+#    msg: "{{ input }}"
+
+- include_vars: /home/mychatops/createvm/ocp/vars/main.yaml
+
+- include: multiple_vm.yaml

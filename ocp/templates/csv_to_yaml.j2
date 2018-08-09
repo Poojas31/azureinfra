@@ -1,0 +1,38 @@
+---
+input:
+{% for item in csv_file.split("\n") %}
+{% if loop.index != 1 %}
+{%  set list = item.split(",") %}
+  - RGname: {{ list[0]|trim() }}
+    RGlocation: {{ list[1]| trim() }}
+    VNETname: {{ list[2]| trim() }}
+    VNETaddress: {{ list[3]| trim() }}
+    SUBNETname: {{ list[4]| trim() }}
+    SUBNETrange: {{ list[5]| trim() }}
+    NSGname: {{ list[6]| trim() }}
+    rule_name: {{ list[7]| trim() }}
+    rule_protocol: {{ list[8]| trim() }}
+    rule_destination_port: {{ list[9]| trim() }}
+    rule_access: {{ list[10]| trim() }}
+    rule_priority: {{ list[11]| trim() }}
+    rule_direction: {{ list[12]| trim() }}
+    NICname: {{ list[13]| trim() }}
+    ip_allocation_method: {{ list[14]| trim() }}
+    private_ip: {{ list[15]| trim() }}
+    ipconfig_name: {{ list[16]| trim() }}
+    VMname: {{ list[17]| trim() }}
+    VMsize: {{ list[18]| trim() }}
+    username: {{ list[19]| trim() }}
+    password: {{ list[20]| trim() }}
+    disk_type: {{ list[21]| trim() }}
+    Image_name: {{ list[22]| trim() }}
+    image_publisher: {{ list[23]| trim() }}
+    image_sku: {{ list[24]| trim() }}
+    image_urn: {{ list[25]| trim() }}
+    image_version: {{ list[26]| trim() }}
+    disk1_size: {{ list[27]| trim() }}
+    disk1_type: {{ list[28]| trim() }}
+    disk2_size: {{ list[29]| trim() }}
+    disk2_type: {{ list[30]| trim() }}
+{%  endif  %}
+{%  endfor  %}
