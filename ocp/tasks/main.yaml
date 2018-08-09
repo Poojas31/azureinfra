@@ -5,6 +5,6 @@
 #- debug:
 #    msg: "{{ input }}"
 
-- include_vars: /home/mychatops/createvm/ocp/vars/main.yaml
+- include_vars: /home/mychatops/mycode/ocp/vars/main.yaml
 
 - include: multiple_vm.yaml

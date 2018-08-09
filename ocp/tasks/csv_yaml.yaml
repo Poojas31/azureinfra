@@ -1,5 +1,5 @@
 - set_fact: 
-    csv_var: /home/mychatops/createvm/ocp/inputs/input.csv
+    csv_var: /home/mychatops/mycode/ocp/inputs/input.csv
 
 - set_fact:
     csv_file: "{{ lookup('file', csv_var ) }}"
@@ -7,6 +7,6 @@
 - name: "convert csv to yaml"
   template:
     src: "./templates/csv_to_yaml.j2"
-    dest: "/home/mychatops/createvm/ocp/vars/main.yaml"
+    dest: "/home/mychatops/mycode/ocp/vars/main.yaml"
   run_once: true
 
