@@ -1,6 +1,6 @@
 ---
 input:
-  - RGname: chatopsRG
+  - RGname: chatopsR
     RGlocation: centralus
     VNETname: chatopsVNET
     VNETaddress: 10.50.1.0/24
