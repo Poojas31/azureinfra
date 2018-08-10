@@ -8,6 +8,6 @@
 - name: "convert csv to yaml"
   template:
     src: "./templates/csv_to_yaml.j2"
-    dest: "/home/mychatops/mycode/ocp/vars/main.yaml"
+    dest: "/home/mychatops/mycode/roles/ocp/vars/main.yaml"
   run_once: true
 

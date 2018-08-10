@@ -1,0 +1,46 @@
+---
+- name: upgrade packages
+  yum:
+    name: unzip
+    state: latest
+  become: true
+
+- set_fact:
+    urlname: "{{ urllist.split('/')[-1] }}" 
+
+- name: Checking for Packer Files 
+  stat: path="/tmp/{{urlname}}"
+  register: packerfiles
+
+- get_url:
+    url: "{{urllist}}"
+    dest: /tmp
+  when: packerfiles.stat.exists == false  
+  become: true
+   
+- name: Unarchive a file that is already on the remote machine
+  unarchive:
+    src: "/tmp/{{urlname}}"
+    dest: /tmp/
+    remote_src: yes
+  become: true
+
+- name: Checking for Packer Configuration Files 
+  stat: path=/tmp/packer
+  register: packerstat
+
+- name: Configuration Packer
+  command: mv /tmp/packer /usr/local/bin
+  when: packerstat.stat.exists
+  become: true
+
+- name: Packer Details 
+  command: packer -machine-readable version
+  register: packerdetails
+  become: true
+  
+- debug: 
+    msg: "Packer Version Information "
+
+- debug: 
+    msg: "{{ packerdetails.stdout_lines|list }}"
