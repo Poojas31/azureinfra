@@ -1,3 +1,10 @@
+
+- name: Create a public ip address
+  azure_rm_publicipaddress:
+    resource_group: "{{ outer_item.RGname }}"
+    name: my_public_ip
+    allocation_method: Static
+
 - name: Create virtual network interface card
   azure_rm_networkinterface:
     resource_group: "{{ outer_item.RGname }}"
@@ -9,3 +16,6 @@
    - name: "{{ outer_item.ipconfig_name }}"
      private_ip_address: "{{ outer_item.private_ip }}"
      private_ip_allocation_method: "{{ outer_item.ip_allocation_method }}"
+     public_ip: yes
+     public_ip_address: my_public_ip
+     public_ip_allocation_method: static

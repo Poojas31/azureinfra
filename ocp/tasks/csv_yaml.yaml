@@ -1,5 +1,6 @@
 - set_fact: 
-    csv_var: /home/mychatops/mycode/ocp/inputs/input.csv
+#    csv_var: /home/mychatops/mycode/ocp/inputs/input.csv
+    csv_var: ./inputs/input.csv
 
 - set_fact:
     csv_file: "{{ lookup('file', csv_var ) }}"
