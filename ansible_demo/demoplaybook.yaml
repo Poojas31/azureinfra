@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  tasks:
+  - name: demo playbook 
+    debug:
+      msg: "hello demo  playboook !"
+    

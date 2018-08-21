@@ -1,0 +1,6 @@
+commands are
+1.get estore app
+2.ssh my vm
+3.deploy infra
+4.deploy CICD
+5.delete infra
