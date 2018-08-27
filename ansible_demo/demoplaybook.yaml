@@ -1,7 +1,6 @@
 ---
-- hosts: localhost
+- hosts: '{{ appenv }}' 
   tasks:
   - name: demo playbook 
     debug:
       msg: "hello demo  playboook !"
-    

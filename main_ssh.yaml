@@ -1,0 +1,8 @@
+---
+- hosts: localhost
+#  vars: 
+#    pass_var: "welcome#1234"
+#    ipaddr_var: "40.113.229.226"
+#    usr_var: "ranjan"
+  tasks:
+  - script: ./sshconnectivity.sh "{{ pass_var }}" "{{ ipaddr_var }}" "{{usr_var}}"

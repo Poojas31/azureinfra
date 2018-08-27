@@ -1,6 +1,6 @@
 [DEV]
-localhost
+localhost ansible_connection=local 
 [PROD]
-localhost
+localhost ansible_connection=local
 [TEST]
-localhost
+localhost ansible_connection=local
