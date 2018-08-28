@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  tasks:
+  - name: remove vm 
+    azure_rm_virtualmachine:
+      resource_group: chatopsR
+      name: chatopsvm
+      state: absent
+  - name: Delete a virtual network
+    azure_rm_virtualnetwork:
+      name: chatopsvnet
+      resource_group: chatopsr
+      state: absent
+
+  - name: delete a security  group
+    azure_rm_securitygroup:
+      name: chatopsnsg 
+      resource_group: chatopsr
+      state: absent
+  - name: delete a resource group
+    azure_rm_resourcegroup:
+      name: chatopsR 
+      state: absent

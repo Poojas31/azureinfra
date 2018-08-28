@@ -1,6 +1,8 @@
 commands are
-1.get estore app
-2.ssh my vm
-3.deploy infra
-4.deploy CICD
-5.delete infra
+1.hello hubot
+2.!help
+3.get estore app
+4.ssh my vm
+5.deploy infra
+6.deploy CICD
+7.delete infra

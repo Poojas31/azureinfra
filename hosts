@@ -1,4 +1,4 @@
 [all]
-104.43.241.192 ansible_ssh_user="ranjanku" ansible_become_pass="welcome#1234"
+104.43.253.212 ansible_ssh_user="ranjanku" ansible_become_pass="welcome#1234"
 #localhost ansible_connection=local
 #13.89.204.217 ansible_ssh_user="ansibletower" ansible_become_pass="welcome#1234"
